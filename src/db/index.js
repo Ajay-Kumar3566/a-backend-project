@@ -15,6 +15,7 @@ const connectDB = async()=>{
         process.exit(1)
     }
 }
+// console.log("FINAL URI: ", `${process.env.MONGODB_URI}/${process.env.DB_NAME}`);
 
 
 export default connectDB

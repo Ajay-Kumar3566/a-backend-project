@@ -8,9 +8,9 @@ app.use(cors({
     credentials:true
 }))
 
-app.use(express.json({limit:"16kb"}))
-app.use(express.urlencoded({extended:true,limit:"16kb"}))
-app.use(express.static("public"))//
+app.use(express.json({limit:"2mb"}))
+app.use(express.urlencoded({extended:true,limit:"5mb"}))
+app.use(express.static("public"))//essential for public folder access
 app.use(cookieParser())
 
 
@@ -20,7 +20,7 @@ import userRouter from './routes/user.routes.js'
 //routes declaration
 app.use("/api/v1/user",userRouter)
 
-// http://localhost:8000/api/v1/users/register
+// http://localhost:8000/api/v1/user/register
 
 
 export{app}
