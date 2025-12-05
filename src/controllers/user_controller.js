@@ -106,7 +106,7 @@ const registerUser= asyncHandler(async(req,res)=>{
 
 // login page is going to start.....👌👌
 
-const loginUser= asyncHandler(async (req,res)=>{
+const loginUser = asyncHandler(async (req,res)=>{
     // req body-> data
     //username or email
     //find the user
@@ -117,10 +117,10 @@ const loginUser= asyncHandler(async (req,res)=>{
     const {email,username,password}=req.body
 
     if(!(username || email)){
-        throw new ApiError(400,"username or password is required")
+        throw new ApiError(400,"username or email is required")
     }
 
-    const user =await User.findOne({
+    const user = await User.findOne({
         $or:[{username},{email}]
     })
 
@@ -136,7 +136,7 @@ const loginUser= asyncHandler(async (req,res)=>{
 
    const {accessToken,refreshToken} = await generateAccessAndRefreshTokens(user._id)
 
-   const loggedInUser = User.findById(user._id).select("-password -refreshToken")//optional
+   const loggedInUser = await User.findById(user._id).select("-password -refreshToken")//optional
 
    const options={
     httpOnly:true,
