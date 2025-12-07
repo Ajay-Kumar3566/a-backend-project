@@ -471,5 +471,4 @@ export{
     updateUserCoverImage,
     getUserChannelProfile,
     getWatchHistory
-
 }
